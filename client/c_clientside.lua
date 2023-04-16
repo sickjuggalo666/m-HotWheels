@@ -54,7 +54,26 @@ AddEventHandler("m-HotWheels:Client:OpenPackSurprise", function()
 			TriggerServerEvent("m-HotWheels:Server:OpenPackSurprise")
 		end)
 	elseif Config.Framework == "esx" then
-
+		if lib.progressBar({
+				duration = 5000,
+				label = 'Opening a pack...',
+				useWhileDead = false,
+				canCancel = true,
+				disable = {
+					move = true,
+					car = true,
+					combat = true,
+				},
+				anim = {
+					dict = 'mp_arresting',
+					clip = 'a_uncuff'
+				}
+			})
+		then
+			TriggerServerEvent("m-HotWheels:Server:OpenPackSurprise")
+		else
+			print('Do stuff when cancelled')
+		end
 	end
 end)
 
@@ -72,7 +91,26 @@ AddEventHandler("m-HotWheels:Client:OpenBoxSurprise", function()
 			TriggerServerEvent("m-HotWheels:Server:OpenBoxSurprise")
 		end)
 	elseif Config.Framework == "esx" then
-
+		if lib.progressBar({
+				duration = 5000,
+				label = 'Opening a box...',
+				useWhileDead = false,
+				canCancel = true,
+				disable = {
+					move = true,
+					car = true,
+					combat = true,
+				},
+				anim = {
+					dict = 'mp_arresting',
+					clip = 'a_uncuff'
+				}
+			})
+		then
+			TriggerServerEvent("m-HotWheels:Server:OpenBoxSurprise")
+		else
+			print('Do stuff when cancelled')
+		end
 	end
 end)
 
@@ -90,7 +128,26 @@ AddEventHandler("m-HotWheels:Client:Open2FastSurprise", function()
 			TriggerServerEvent("m-HotWheels:Server:Open2FastSurprise")
 		end)
 	elseif Config.Framework == "esx" then
-
+		if lib.progressBar({
+				duration = 5000,
+				label = 'Opening Fast & Furious box...',
+				useWhileDead = false,
+				canCancel = true,
+				disable = {
+					move = true,
+					car = true,
+					combat = true,
+				},
+				anim = {
+					dict = 'mp_arresting',
+					clip = 'a_uncuff'
+				}
+			})
+		then
+			TriggerServerEvent("m-HotWheels:Server:Open2FastSurprise")
+		else
+			print('Do stuff when cancelled')
+		end
 	end
 end)
 
@@ -102,7 +159,7 @@ AddEventHandler("m-HotWheels:Client:OpenWhiteBox", function()
 		TriggerServerEvent("inventory:server:OpenInventory", "stash", "HW_WhiteBox_" .. citizenid, { maxweight = 250000, slots = 35 })
 		TriggerEvent("inventory:client:SetCurrentStash", "HW_WhiteBox_" .. citizenid)
 	elseif Config.Framework == "esx" then
-
+		
 	end
 end)
 

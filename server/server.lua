@@ -123,6 +123,10 @@ elseif Config.Framework == "esx" then
         local src = source
         local Player = ESX.GetPlayerFromId(src)
         if not Player then return end
+        local data = {
+            
+        }
+        Inventory:RegisterStash(data.id,data.label,data.slots,data.maxWeight,false,data.owner)
         TriggerClientEvent("m-HotWheels:Client:OpenBlueBox", src)
     end)
 end
@@ -158,11 +162,11 @@ AddEventHandler("m-HotWheels:Server:OpenPackSurprise", function()
         local ultrarareDrop = Config.HotWheels.UltraRareCars[math.random(1, #Config.HotWheels.UltraRareCars)]
 
         if chance <= Config.HotWheels.Settings.RareCars and chance > Config.HotWheels.Settings.UltraRareCars then
-            Player.addInventoryItem(rareDrop, 1)
+            Inventory:AddItem(src, rareDrop, 1)
         elseif chance <= Config.HotWheels.Settings.UltraRareCars then
-            Player.addInventoryItem(ultrarareDrop, 1)
+            Inventory:AddItem(src, ultrarareDrop, 1)
         else
-            Player.addInventoryItem(normalDrop, 1)
+            Inventory:AddItem(src, normalDrop, 1)
         end
     end
 end)
@@ -201,18 +205,18 @@ AddEventHandler("m-HotWheels:Server:OpenBoxSurprise", function()
 
         if chance <= Config.HotWheels.Settings.RareCars and chance > Config.HotWheels.Settings.UltraRareCars then
             for _ = 1, math.random(2, 2), 1 do
-                local randItem = Config.HotWheels.RareCars[math.random(1, #Config.HotWheels.RareCars)]
-                Player.addInventoryItem(randItem, 1)
+                local randItem = Config.HotWheels.RareCars[math.random(1, #Config.HotWheels.RareCars)
+                Inventory:AddItem(src, randItem, 1)
             end
         elseif chance <= Config.HotWheels.Settings.UltraRareCars then
             for _ = 1, math.random(2, 2), 1 do
                 local randItem = Config.HotWheels.UltraRareCars[math.random(1, #Config.HotWheels.UltraRareCars)]
-                Player.addInventoryItem(randItem, 1)
+                Inventory:AddItem(src, randItem, 1)
             end
         else
             for _ = 1, math.random(2, 2), 1 do
                 local randItem = Config.HotWheels.NormalCars[math.random(1, #Config.HotWheels.NormalCars)]
-                Player.addInventoryItem(randItem, 1)
+                Inventory:AddItem(src, randItem, 1)
             end
         end
     end
@@ -232,6 +236,6 @@ AddEventHandler("m-HotWheels:Server:Open2FastSurprise", function()
         local Player = ESX.GetPlayerFromId(src)
         if not Player then return end
         local randItem = Config.HotWheels.FastFurious[math.random(1, #Config.HotWheels.FastFurious)]
-        Player.addInventoryItem(randItem, 1)
+        Inventory:AddItem(src, randItem, 1)
     end
 end)
